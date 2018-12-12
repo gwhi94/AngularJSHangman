@@ -12,24 +12,70 @@
     <title>Hangman App</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="">
+    <link rel="stylesheet" href="stylesheet.css">
+    <link href="https://fonts.googleapis.com/css?family=PT+Sans" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
+    </link>
 </head>
 
 <body ng-app="HangmanApp" ng-controller="GameController">
 
-    <div>
-        {{title}}
+    <h1 id="mainHeader" class="text-center">Material Hangman</h1>
+    <p class="text-center">6 guesses | Random words</p>
+    </br>
+    </br>
+    <h1 id="header" class="text-center">Your word to guess</br>
+        {{displayWord}}
+    </h1>
+
+
+    <div class="main">
+
+        <div class="guessesLeft" style="margin-bottom:20px;">
+            <h3 id="guessesLeftHead">{{guesses}}</h3>
+        </div>
+
+
+        <div class="input" style="margin-bottom:20px;">
+            <input type="text" name="guess" ng-model="input.letter">
+            <button class="btn btn-primary" ng-click="letterChosen()">Submit</button>
+        </div>
+
+
+
+        <div class="progressBlock">
+
+        </div>
+
     </div>
 
 
+    <div class="attempts">
+
+
+        <div class="grid-item">
+            <div class="incorrectGuesses">
+                <h3 class="text-center">Incorrect Guesses:</h3>
+                <span class="iguess" ng-repeat="letter in incorrectLettersChosen">{{letter}}</span>
+            </div>
+        </div>
+
+        <div class="grid-item">
+            <div class="correctGuesses">
+                <h3 class="text-center">Correct Guesses:</h3>
+                <span class="iguess" ng-repeat="letter in correctLettersChosen">{{letter}}</span>
+            </div>
+        </div>
+    </div>
 
 
 
     <!--Modules-->
     <script src="app.js"></script>
     <!--Controllers-->
-    <script src="GameController.js"></script>
+
     <!--Services-->
 </body>
 
